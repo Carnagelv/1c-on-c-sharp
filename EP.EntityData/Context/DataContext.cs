@@ -25,6 +25,11 @@ namespace OneC.EntityData.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TableItem>()
+                .HasRequired(m => m.TableColumn)
+                .WithMany(m => m.TableItems)
+                .HasForeignKey(m => m.TableColumnId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

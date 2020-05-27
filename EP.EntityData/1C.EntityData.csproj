@@ -50,11 +50,20 @@
     <Compile Include="Context\DataContext.cs" />
     <Compile Include="Context\TableItem.cs" />
     <Compile Include="Context\TableColumn.cs" />
+    <Compile Include="Migrations\202005272124330_InitialSetup.cs" />
+    <Compile Include="Migrations\202005272124330_InitialSetup.Designer.cs">
+      <DependentUpon>202005272124330_InitialSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005272124330_InitialSetup.resx">
+      <DependentUpon>202005272124330_InitialSetup.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

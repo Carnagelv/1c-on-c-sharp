@@ -13,7 +13,7 @@ namespace OneC.EntityData.Context
 
         public string Name { get; set; }
 
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
 
         public virtual ICollection<TableItem> TableItems { get; set; }
     }
