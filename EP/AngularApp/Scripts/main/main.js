@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('EP', ['ngSanitize', 'ngMaterial', 'ngMessages', 'ngRoute'])
+    angular.module('OneC', ['ngSanitize', 'ngMaterial', 'ngMessages', 'ngRoute'])
         .controller('MenuCtrl', function ($scope, $mdSidenav) {
             $scope.toggleMenu = function () {
                 $mdSidenav('left').toggle();

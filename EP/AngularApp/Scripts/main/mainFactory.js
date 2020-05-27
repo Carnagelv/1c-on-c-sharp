@@ -44,11 +44,6 @@ function MainFactory($mdToast, $mdDialog, $location, $anchorScroll, templateUrl,
         );
     };
 
-    factory.scrollTo = function (scrollLocation) {
-        $location.hash(scrollLocation);
-        $anchorScroll();
-    };
-
     factory.getInformers = function () {
         return $http.get('/User/GetInformers');
     };
