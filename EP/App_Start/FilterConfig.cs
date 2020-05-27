@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace EP
+namespace OneC
 {
     public class FilterConfig
     {

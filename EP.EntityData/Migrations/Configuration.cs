@@ -1,7 +1,7 @@
-using EP.EntityData.Context;
+using OneC.EntityData.Context;
 using System.Data.Entity.Migrations;
 
-namespace EP.EntityData.Migrations
+namespace OneC.EntityData.Migrations
 {   
     internal sealed class Configuration : DbMigrationsConfiguration<DataContext>
     {
@@ -12,10 +12,6 @@ namespace EP.EntityData.Migrations
 
         protected override void Seed(DataContext context)
         {
-            context.Webpages_Roles.AddOrUpdate(m => m.RoleId,  
-                new Webpages_Roles() { RoleName = "SuperAdmin" },
-                new Webpages_Roles() { RoleName = "SportsMan" },
-                new Webpages_Roles() { RoleName = "CyberSportsMan" });
         }
     }
 }

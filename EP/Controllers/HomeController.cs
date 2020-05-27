@@ -1,13 +1,13 @@
-﻿using EP.BusinessLogic.Managers;
-using EP.BusinessLogic.Models;
-using EP.EntityData.Helpers;
+﻿using OneC.BusinessLogic.Managers;
+using OneC.BusinessLogic.Models;
+using OneC.EntityData.Helpers;
 using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
 
-namespace EP.Controllers
+namespace OneC.Controllers
 {
     public class HomeController : EPController
     {

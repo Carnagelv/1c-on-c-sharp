@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP", "EP\EP.csproj", "{1955FBCA-F154-452C-A8FF-26EF43D67314}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1C", "EP\1C.csproj", "{1955FBCA-F154-452C-A8FF-26EF43D67314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.BusinessLogic", "EP.BusinessLogic\EP.BusinessLogic.csproj", "{B19FE3A8-9D6D-4866-8BA5-3260B0F9B78A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1C.BusinessLogic", "EP.BusinessLogic\1C.BusinessLogic.csproj", "{B19FE3A8-9D6D-4866-8BA5-3260B0F9B78A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.EntityData", "EP.EntityData\EP.EntityData.csproj", "{0A81E5A2-2ACF-4225-8ECF-C3DB8DF23184}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1C.EntityData", "EP.EntityData\1C.EntityData.csproj", "{0A81E5A2-2ACF-4225-8ECF-C3DB8DF23184}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

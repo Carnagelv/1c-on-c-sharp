@@ -1,14 +1,14 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(EP.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(EP.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(OneC.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(OneC.App_Start.NinjectWebCommon), "Stop")]
 
-namespace EP.App_Start
+namespace OneC.App_Start
 {
     using System;
     using System.Web;
-    using EP.BusinessLogic.Infrastructure;
-    using EP.BusinessLogic.Managers;
-    using EP.BusinessLogic.Services;
-    using EP.EntityData.Context;
+    using OneC.BusinessLogic.Infrastructure;
+    using OneC.BusinessLogic.Managers;
+    using OneC.BusinessLogic.Services;
+    using OneC.EntityData.Context;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -67,31 +67,11 @@ namespace EP.App_Start
             DependencyResolver.Initialize(kernel);
             kernel.Bind<IDataContext>().To<DataContext>().InRequestScope();
 
-            kernel.Bind<IUserProfileManager>().To<UserProfileManager>();
-            kernel.Bind<IFriendManager>().To<FriendManager>();
-            kernel.Bind<IRequestManager>().To<RequestManager>();
-            kernel.Bind<INewsManager>().To<NewsManager>();
-            kernel.Bind<ITeamManager>().To<TeamManager>();
-            kernel.Bind<IFeedManager>().To<FeedManager>();
-            kernel.Bind<IMessageManager>().To<MessageManager>();
-            kernel.Bind<ITournamentManager>().To<TournamentManager>();
-            kernel.Bind<IPlayerManager>().To<PlayerManager>();
-            kernel.Bind<IMovieManager>().To<MovieManager>();
-            kernel.Bind<IMatchManager>().To<MatchManager>();
+            kernel.Bind<ITableColumnService>().To<TableColumnService>();
+            kernel.Bind<ITableColumnManager>().To<TableColumnManager>();
 
-            kernel.Bind<IUserProfileService>().To<UserProfileService>();           
-            kernel.Bind<IFriendService>().To<FriendService>();          
-            kernel.Bind<IRequestToFriendService>().To<RequestToFriendService>();
-            kernel.Bind<INewsService>().To<NewsService>();
-            kernel.Bind<INewsLikeService>().To<NewsLikeService>();
-            kernel.Bind<INewsCommentaryService>().To<NewsCommentaryService>();
-            kernel.Bind<ITeamService>().To<TeamService>();
-            kernel.Bind<IFeedService>().To<FeedService>();
-            kernel.Bind<IMessageService>().To<MessageService>();
-            kernel.Bind<ITournamentService>().To<TournamentService>();
-            kernel.Bind<IPlayerService>().To<PlayerService>();
-            kernel.Bind<IMovieService>().To<MovieService>();
-            kernel.Bind<IMatchService>().To<MatchService>();
+            kernel.Bind<ITableItemService>().To<TableItemService>();
+            kernel.Bind<ITableItemManager>().To<TableItemManager>();
         }
     }
 }

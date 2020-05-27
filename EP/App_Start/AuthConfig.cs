@@ -1,6 +1,6 @@
 ﻿using WebMatrix.WebData;
 
-namespace EP
+namespace OneC
 {
     public static class AuthConfig
     {

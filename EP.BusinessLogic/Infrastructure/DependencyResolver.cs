@@ -1,7 +1,7 @@
 ﻿using Ninject;
 using System;
 
-namespace EP.BusinessLogic.Infrastructure
+namespace OneC.BusinessLogic.Infrastructure
 {
     public static class DependencyResolver
     {

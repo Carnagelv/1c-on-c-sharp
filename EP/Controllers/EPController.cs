@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using EP.BusinessLogic.Models;
 using System.Web.Mvc;
-using WebMatrix.WebData;
 
-namespace EP.Controllers
+namespace OneC.Controllers
 {
     public class EPController : Controller
     {
@@ -15,16 +13,6 @@ namespace EP.Controllers
             {
                 mapper = Mappings.GetMapper();
             }
-        }
-
-        protected int GetCurrentUserId()
-        {
-            return WebSecurity.GetUserId(User?.Identity.Name);
-        }
-
-        protected string GetCurrentUserName()
-        {
-            return User?.Identity.Name ?? string.Empty;
         }
     }
 }
