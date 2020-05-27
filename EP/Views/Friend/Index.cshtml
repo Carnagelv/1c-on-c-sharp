@@ -1,0 +1,82 @@
+﻿@using EP.BusinessLogic.Models
+@using EP.EntityData.Helpers
+@section CSS { @Styles.Render("~/Content/friend") }
+@model PageModel
+
+<md-content ng-app="EP.Friend" ng-controller="friendCtrl" ng-init="init(@Model.ID)" ng-cloak>
+    @if (Model.IsOwner)
+    {
+        <md-toolbar id="header">Jūsu Draugi</md-toolbar>
+    }
+    else
+    {
+        <md-toolbar id="header">{{ headerName }}</md-toolbar>
+    }
+
+    <md-content class="container">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" ng-cloak>
+                    <md-tabs class="friends-content" md-dynamic-height md-border-bottom>
+                        <md-tab label="Draugi">
+                            <md-content>
+                                <div ng-if="friends.length === 0">
+                                    <center>Nav lietotāju</center>
+                                </div>
+                                <div ng-if="friends.length !== 0" class="row justify-content-center">
+                                    <div ng-repeat="user in friends" class="friend-card">
+                                        @Html.Partial("_Friend", new PageModel { ActionType = FriendPageTypeEnum.Friend })
+                                    </div>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                        @if (Model.IsOwner)
+                        {
+                            <md-tab label="Ienākošie Pieteikumi" ng-disabled="isLoading">
+                                <md-content class="md-padding">
+                                    <div ng-if="requestsTo.length === 0">
+                                        <center>Nav pieteikumu</center>
+                                    </div>
+                                    <div ng-if="requestsTo.length !== 0" class="row justify-content-center">
+                                        <div ng-repeat="user in requestsTo" class="friend-card">
+                                            @Html.Partial("_Friend", new PageModel { ActionType = FriendPageTypeEnum.RequestTo })
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="Izejošie Pieteikumi" ng-disabled="isLoading">
+                                <md-content class="md-padding">
+                                    <div ng-if="requestsFrom.length === 0">
+                                        <center>Nav pieteikumu</center>
+                                    </div>
+                                    <div ng-if="requestsFrom.length !== 0" class="row justify-content-center">
+                                        <div ng-repeat="user in requestsFrom" class="friend-card">
+                                            @Html.Partial("_Friend", new PageModel { ActionType = FriendPageTypeEnum.RequestFrom })
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="Meklēt Draugus" ng-disabled="isLoading">
+                                <md-content class="md-padding">
+                                    <div ng-if="otherUsers.length === 0">
+                                        <center>Nav lietotāju</center>
+                                    </div>
+                                    <div ng-if="otherUsers.length !== 0" class="row justify-content-center">
+                                        <div ng-repeat="user in otherUsers" class="friend-card">
+                                            @Html.Partial("_Friend", new PageModel { ActionType = FriendPageTypeEnum.Other })
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </md-tab>
+                        }
+                    </md-tabs>
+                </div>
+                <div class="col-lg-4 right-side" ng-controller="mainCtrl" ng-cloak>
+                    @Html.Partial("_RightSide")
+                </div>
+            </div>
+        </div>
+</md-content>
+</md-content>
+
+@section JS { @Scripts.Render("~/Bundles/friends") }

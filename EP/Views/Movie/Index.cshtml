@@ -1,0 +1,44 @@
+﻿@using EP.BusinessLogic.Models
+@model PageModel
+
+@section CSS { @Styles.Render("~/Content/movie") }
+
+<md-content ng-app="EP.Movie" ng-controller="movieCtrl" ng-cloak>
+    <md-toolbar id="header">Spēlētāji</md-toolbar>
+    <md-content class="container">
+        <div class="col-12 " ng-cloak>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="default-whiteframe">
+                        <div class="default-blueframe">
+                            Mūsu video
+                        </div>
+                        <div class="video-filter">
+                            Parādīt nākošo sezonu video:
+                            <md-checkbox class="md-primary" ng-model="season.IsSelected" ng-change="selectSeason()" ng-repeat="season in movieSeasons">{{ season.Season }}</md-checkbox>
+                        </div>
+                        <div class="col-12">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-6" ng-repeat="movie in movies">
+                                    <div class="video-title" ng-bind="movie.Title"></div>
+                                    <div class="video-bg" ng-bind-html="movie.Link"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="!isLoading && movies.length === 0">
+                            <div class="col-12 no-item">Nav video</div>
+                        </div>
+                        <div class="row justify-content-center" ng-if="isLoading">
+                            <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 right-side" ng-controller="mainCtrl" ng-cloak>
+                    @Html.Partial("_RightSide")
+                </div>
+            </div>            
+        </div>
+    </md-content>
+</md-content>
+
+@section JS { @Scripts.Render("~/Bundles/movies") }

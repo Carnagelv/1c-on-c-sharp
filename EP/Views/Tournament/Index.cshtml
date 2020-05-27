@@ -1,0 +1,25 @@
+﻿@using EP.BusinessLogic.Models
+@model PageModel
+
+@section CSS { @Styles.Render("~/Content/tournament") }
+
+<md-content ng-app="EP.Tournament" ng-controller="tournamentCtrl" ng-cloak>
+    <md-toolbar id="header">Komandas</md-toolbar>
+    <md-content class="container">
+        <div class="col-12" ng-cloak>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" ng-if="activeSection === sections.list">
+                    @Html.Partial("_List")
+                </div>
+                <div class="col-lg-8" ng-if="activeSection === sections.details">
+                    @Html.Partial("_Details")
+                </div>
+                <div class="col-lg-4 right-side" ng-controller="mainCtrl">
+                    @Html.Partial("_RightSide")
+                </div>
+            </div>
+        </div>
+    </md-content>
+</md-content>
+
+@section JS { @Scripts.Render("~/Bundles/tournaments") }

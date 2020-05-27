@@ -1,0 +1,144 @@
+﻿.friends-content {
+    background-color: #FFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.friends-content md-content {
+    background-color: #FFF;
+    padding: 15px;
+}
+
+.photo-logo {
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: top;
+}
+
+md-card md-card-title {
+    padding: 12px 8px;
+    background-color: #1F70A8;
+    color: #FFF;
+    font-size: 17px;
+    line-height: 10px;
+}
+
+.card-media {
+    padding: 5px;
+}
+
+md-tab-content .col-6.subhead {
+    font-size: 12px;
+    padding: 6px;
+}
+
+.dialog {
+    padding: 15px;
+    border-top: 1px solid lightgrey;
+    position: relative;
+    cursor: pointer;
+}
+
+.dialog:hover {
+    background-color: whitesmoke;
+}
+
+.dialog.need-read {
+    color: #004085;
+    background-color: #CCE5FF;
+}
+
+.dialog > .dialog-info {
+    min-height: 60px;
+}
+
+.dialog-user-photo {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-position: top;
+}
+
+.dialog-user-photo-min,
+.dialog-user-photo-min-list {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-position: top;   
+}
+
+.dialog-user-photo-min {
+    margin: 0 auto;
+}
+
+.dialog-user-photo-min-list {
+    margin-left: 15px;
+}
+
+.last-message {
+    margin-top: 10px;
+}
+
+.dialog-input {
+    width: 100%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.send-icon {
+    padding-top: 22px;
+}
+
+.chat-window {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-right: -15px;
+}
+
+.no-messages {
+    position: absolute;
+    bottom: 30px;
+    left: 40%;
+}
+
+.last-message-text {
+    margin-top: 7px;
+}
+
+.author-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.friend-card {
+    width: 260px;
+    padding: 8px;
+}
+
+.action-icons {
+    text-align: right;
+    padding: 0 10px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .dialog-user-photo {
+        width: 48px;
+        height: 48px;
+    }
+}

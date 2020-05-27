@@ -1,0 +1,34 @@
+﻿<div class="default-whiteframe">
+    <div class="default-blueframe">
+        Jūsu Dialogi
+    </div>
+    <div class="column justify-content-center col-12">
+        <div class="row">
+            <div class="col-12 no-item text-right">
+                <i ng-click="createDialog()" class="pointer material-icons" title="Izveidot">add</i>
+            </div>
+        </div>
+        <div class="row align-items-center dialog" ng-repeat="dialog in dialogs" ng-click="getDialogById(dialog.DialogId)" ng-class="{'need-read': !dialog.IsRead}">
+            <div class="col-2 col-md-1">
+                <div class="dialog-user-photo" style="background-image: url('{{ dialog.RecipentImg }}');"></div>
+            </div>
+            <div class="col-10 col-md-11 dialog-info">
+                <div class="row">
+                    <div class="col-12" ng-bind="dialog.Recipient"></div>
+                    <div class="col-12 last-message" ng-if="dialog.LastMessage !== null">
+                        <div class="row">
+                            <div class="dialog-user-photo-min-list" style="background-image:url('{{ dialog.LastSenderImg }}');"></div>
+                            <div class="col-8 last-message-text" ng-bind="dialog.LastMessage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center no-item border-top" ng-if="!isLoading && dialogs.length === 0">
+            Nav dialogu
+        </div>
+        <div class="row justify-content-center" ng-if="isLoading">
+            <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@section CSS{ <link href="~/Content/css/main.css" rel="stylesheet" /> }
+
+<div class="background" ng-app="EP.User" ng-controller="userCtrl" ng-cloak>
+    <div ng-if="showMainSection">
+        @Html.Partial("_Main")
+    </div>
+    <div ng-if="showSocialNetwork" class="btn-back" ng-click="backToMain()">Atpakaļ</div>
+    <div ng-if="showSocialNetwork" class="full-size login-page" layout-gt-xs="row" layout-xs="column" layout-align="center center">
+        <div layout="column" class="grey-right">
+            <div class="ep-white"></div>
+            <div class="main-btn">
+                <md-button class="md-raised md-primary md-hue-1" ng-click="registration()">Pieteikties</md-button>
+                <md-button class="md-raised" ng-click="login()">Ienākt</md-button>
+            </div>
+        </div>
+        <div layout="column" class="main-text">
+            <h1>Savāc komandu<br> un ESI PIRMAIS!</h1>
+            <h2>Piedalaties visos iespējamos turnīros.</h2>
+            <p><i class="material-icons">check</i> Sporta sacensības</p>
+            <p><i class="material-icons">check</i> Intelektuālās sacensības</p>
+            <p><i class="material-icons">check</i> Kibersporta sacensības</p>
+        </div>
+    </div>
+    <div ng-if="showCyberSport" class="black">
+        @Html.Partial("_Cyber")
+    </div>
+</div>
+
+@section JS { @Scripts.Render("~/Bundles/user") }

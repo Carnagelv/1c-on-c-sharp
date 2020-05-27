@@ -1,0 +1,51 @@
+﻿.match-score div {
+    font-weight: bold;
+}
+
+.matches .row img {
+    height: 20px;
+    vertical-align: middle;
+    max-width: none;
+}
+
+.matches .match-item {
+    padding: 10px 0 0;
+}
+
+    .matches .match-item:first-child {
+        border-top: 1px solid #DDD;
+    }
+
+.won {
+    color: green;
+}
+
+.lose {
+    color: red;
+}
+
+.match-filters md-input-container {
+    width: 100%;
+}
+
+.matches .match-item {
+    border-bottom: 1px solid #DDD;
+}
+
+.matches .row div {
+    align-self: flex-start;
+}
+
+@media only screen and (max-width: 600px) {
+    .col-0 {
+        display: none;
+    }
+
+    .match-item {
+        font-size: 13px;
+    }
+
+    .material-icons {
+        font-size: 16px;
+    }
+}

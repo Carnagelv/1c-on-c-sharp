@@ -1,0 +1,20 @@
+﻿.video-filter {
+    padding: 7px;
+}
+
+.video-filter md-checkbox:first-child {
+    margin-left: 20px;
+}
+
+.video-bg {
+    background-color: #000;
+    margin-bottom: 10px
+}
+
+.video-title {
+    margin: 10px 0 5px;
+    border-left: 3px solid #1F70A8;
+    padding-left: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+}

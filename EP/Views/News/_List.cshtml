@@ -1,0 +1,30 @@
+﻿<div class="row">
+    <div class="news-block" ng-repeat="item in news">
+        <div class="news-img">
+            <div class="img" style="background-image:url({{ item.ImgUrl }})"></div>
+            <div ng-click="getNewsItem(item.Id)" class="news-title-block">{{ item.Title }}</div>
+        </div>
+        <div class="news-data">
+            <div class="text-left">
+                <i class="material-icons">
+                    mode_comment
+                </i>
+                <span ng-bind="item.CommentCount"></span>
+            </div>
+            <div class="text-right" ng-class="{ 'liked': item.IsYouLiked }">
+                <span ng-bind="item.LikeCount"></span>
+                <i class="material-icons" ng-click="toggleLike(item)">
+                    {{ item.IsYouLiked ? 'favorite' : 'favorite_border' }}
+                </i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="row justify-content-center" ng-if="isLoading">
+        <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+    </div>
+    <div class="row no-item" ng-if="!isLoading && news.length === 0">
+        Nav ziņas
+    </div>
+</div>

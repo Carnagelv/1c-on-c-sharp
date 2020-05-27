@@ -1,0 +1,16 @@
+﻿<div class="default-whiteframe">
+    <div class="default-blueframe">
+        <md-button ng-click="stepBack()" class="back">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </md-button>
+        <div class="title">Loading</div>
+    </div>
+    <div class="col-12">
+      @*TODO MATCH INFO*@        
+    </div>   
+    <div class="row justify-content-center" ng-if="isLoading">
+        <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+    </div>
+</div>

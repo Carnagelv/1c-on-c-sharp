@@ -1,0 +1,57 @@
+﻿<md-dialog aria-label="Autorizācija" class="modal-window">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Autorizācija</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">cancel</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="userForm" ng-if="isLoginSection" ng-cloak>
+            <div class="md-dialog-content" layout="column">
+                <div class="column">
+                    <md-input-container>
+                        <label>E-pasts</label>
+                        <input tabindex="1" name="email" ng-model="userData.UserName" ng-pattern="/^.+@.+\..+$/" required />
+                        <div ng-messages="userForm.email.$error">
+                            <div ng-message-exp="['pattern']">Jūsu e-pastam ir nepareizs formāts</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Parole</label>
+                        <input tabindex="2" type="password" name="password" ng-model="userData.Password" minlength="8" required />
+                        <div ng-messages="userForm.password.$error">
+                            <div ng-message="minlength">Jūsu parole ir pārāk īsa</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="row justify-content-center" ng-if="isLoading">
+                    <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+                </div>
+            </div>
+        </form>
+        <form name="userForm" ng-if="isResetPasswordSection" ng-cloak>
+            <div class="md-dialog-content" layout="column">
+                <div class="row">
+                    Jums e-pastā tiks nosūtīta papildus instrukcijas
+                </div>
+                <md-input-container>
+                    <label>E-pasts</label>
+                    <input tabindex="1" name="email" ng-model="userData.UserName" ng-pattern="/^.+@.+\..+$/" required />
+                    <div ng-messages="userForm.email.$error">
+                        <div ng-message-exp="['pattern']">Jūsu e-pastam ir nepareizs formāts</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout-gt-xs="row" layout-xs="column" layout-xs-align="center center">
+        <md-button class="md-raised md-accent gray" ng-click="openResetPassword()" ng-if="isLoginSection">Aizmirsu paroli</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancel()">Atcelt</md-button>
+        <md-button class="md-raised md-primary md-hue-1" ng-if="isResetPasswordSection" ng-disabled="userForm.$invalid" ng-click="resetPassword()">Nosutīt</md-button>
+        <md-button class="md-raised md-primary md-hue-1" ng-if="isLoginSection" ng-disabled="userForm.$invalid" ng-click="toLoginUser()" tabindex="3">Ienākt</md-button>
+    </md-dialog-actions>
+</md-dialog>

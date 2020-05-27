@@ -1,0 +1,36 @@
+﻿<div class="default-whiteframe">
+    <div class="default-blueframe">
+        Jūsu Komandas
+    </div>
+    <div class="column justify-content-center col-12">
+        <div class="row default-item" ng-repeat="team in userTeams">
+            <div class="col-1 align-self-center">{{$index + 1}}.</div>
+            <div class="col-1 col-sm-1 align-self-center mob-logo"><img ng-src="{{team.LogoUrl}}" /></div>
+            <div class="col-7 align-self-center">{{ team.Name }}</div>
+            <div class="col-3 col-sm-3 align-self-center text-right">
+                <i ng-click="editTeam(team.Id)" class="material-icons">edit</i>
+            </div>
+        </div>
+        <div class="row alert" ng-if="userTeams.length !== 3">
+            Jūs varāt izveidot komandu <md-button class="md-raised md-primary" ng-click="createTeam()">Izveidot</md-button>
+        </div>
+    </div>
+</div>
+<div class="default-whiteframe mt30">
+    <div class="default-blueframe">
+        Visas Komandas
+    </div>
+    <div class="col-12">
+        <div class="row default-item" ng-repeat="team in teams">
+            <div class="col-1 align-self-center">{{$index + 1}}.</div>
+            <div class="col-1 col-sm-1 align-self-center mob-logo"><img ng-src="{{team.LogoUrl}}" /></div>
+            <div class="col-7 align-self-center">{{ team.Name }}</div>
+            <div class="col-3 col-sm-3 align-self-center text-right">
+                <i ng-click="getTeamById(team.Id)" class="material-icons">remove_red_eye</i>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="teams.length === 0">
+        <div class="col-12 no-item">Nav komandas</div>
+    </div>
+</div>

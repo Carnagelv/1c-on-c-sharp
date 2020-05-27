@@ -1,0 +1,34 @@
+﻿@{
+    string pattern = @"/^.+@.+\..+$/";
+}
+
+<div class="default-whiteframe">
+    <div class="default-blueframe">
+        <md-button ng-click="backToProfile()" class="back">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </md-button>
+        <div class="title">Nomainīt E-pastu</div>
+    </div>
+    <div class="col-12">
+        <div layout="column" layout-align="center center" id="user-info">
+            <form name="emailForm" layout="column" ng-cloak>
+                <md-input-container>
+                    <label>E-pasts</label>
+                    <input tabindex="1" name="email" ng-model="userData.newEmail" ng-pattern="@pattern" required />
+                    <div ng-messages="emailForm.email.$error">
+                        <div ng-message-exp="['pattern']">Jūsu e-pastam ir nepareizs formāts</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Parole</label>
+                    <input tabindex="1" name="password" type="password" ng-model="userData.oldPassword" ng-minlength="8" required />
+                </md-input-container>
+            </form>
+            <div class="text-center">
+                <md-button class="md-raised md-primary" ng-disabled="emailForm.$invalid" ng-click="actionChangeEmail()">Apstiprināt</md-button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿<div class="default-whiteframe">
+    <div class="default-blueframe">
+        <md-button ng-click="backToProfile()" class="back">
+            <i class="material-icons">
+                keyboard_backspace
+            </i>
+        </md-button>
+        <div class="title">Uzstadijumi</div>
+    </div>
+    <div class="col-12">
+        @if (Model.IsOwner && Model.IsActive)
+        {
+            <div class="profile-section-title">Pamatinformācija</div>
+            <form name="userForm" ng-cloak>
+                <div id="user-info" layout="column" layout-align="center center">
+                    <md-input-container>
+                        <label>Vārds</label>
+                        <input name="FirstName" ng-model="userData.FirstName" required />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Uzvārds</label>
+                        <input name="LastName" ng-model="userData.LastName" required />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Dzimšanas datums</label>
+                        <md-datepicker ng-model="userData.DateOfBirth" md-hide-icons="calendar" required></md-datepicker>
+                    </md-input-container>
+                    <md-input-container class="inside-select">
+                        <label>Disciplīna</label>
+                        <md-select name="Discipline" ng-model="userData.Discipline">
+                            <md-option ng-repeat="discipline in disciplines" ng-value="{{ discipline.value }}">{{ discipline.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="inside-select" ng-if="userData.Discipline == disciplines[0].value">
+                        <label>Pozīcija</label>
+                        <md-select name="Position" ng-model="userData.Position">
+                            <md-option ng-repeat="position in positions" ng-value="{{ position.value }}">{{ position.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <div class="row">
+                        <md-button class="md-raised md-primary" ng-disabled="userForm.$invalid" ng-click="saveSettings()">Saglabāt</md-button>
+                    </div>
+                </div>
+            </form>
+            <hr />
+            <div class="text-center changes-button">
+                <h4>Nomainīt</h4>
+                <md-button class="md-raised md-primary" ng-click="changePassword()">Parole</md-button>
+                @if (Model.IsActive)
+                {
+                    <text><md-button class="md-raised md-primary" ng-click="changeEmail()">E-pastu</md-button></text>
+                    <text><md-button class="md-raised md-primary" ngf-select="uploadPhoto($file, $invalidFiles)"
+                                     ng-model="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB">Fotogrāfiju</md-button></text>
+                }
+            </div>
+            
+        }
+        else
+        {
+            <div class="no-item">
+                Jums nav piekļuves pie šīs lapas.
+            </div>
+        }
+    </div>
+</div>

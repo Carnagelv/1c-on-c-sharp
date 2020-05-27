@@ -1,0 +1,68 @@
+﻿@using EP.BusinessLogic.Models
+@model PageModel
+
+<div class="news-inside" ng-if="!isLoading">
+    <md-button ng-click="stepBack()" class="back">
+        <i class="material-icons">
+            keyboard_backspace
+        </i>
+    </md-button>
+    <div class="news-title">
+        {{ selectedNews.Title }}
+    </div>
+    <div class="news-text">
+        <div class="col-12">
+            <div ng-bind-html="selectedNews.Text"></div>
+            <div class="news-stats">
+                <div class="row">
+                    <div ng-class="{ 'liked': selectedNews.IsYouLiked }" class="col-4">
+                        <i class="material-icons" ng-click="toggleLike(selectedNews)">
+                            {{ selectedNews.IsYouLiked ? 'favorite' : 'favorite_border' }}
+                        </i>
+                        <span ng-bind="selectedNews.LikeCount"></span>
+                    </div>
+                    <div class="col-4">
+                        <md-switch ng-model="currentLanguage" ng-change="changeLanguage()" class="md-primary justify-content-center">Krievu</md-switch>
+                    </div>
+                    <div class="col-4 text-right">
+                        {{ selectedNews.CreateDate }}
+                    </div>
+                </div>
+            </div>
+            <md-input-container md-no-float class="md-block">
+                <textarea md-maxlength="150" rows="3" placeholder="Uzraksīt komentāru" ng-model="comment.text" name="comment" md-select-on-focus></textarea>
+            </md-input-container>
+            <div class="row justify-content-center">
+                <md-button class="md-raised md-primary" ng-disabled="comment.text === undefined || comment.text.length === 0" ng-click="addComment()">Nosūtīt</md-button>
+            </div>
+            <div class="column">
+                <h3 ng-if="selectedNews.Commentaries.length !== 0">Komentāri ({{ selectedNews.CommentCount }})</h3>
+                <div class="row align-items-center comment" ng-repeat="comment in selectedNews.Commentaries">
+                    <div class="comment-user-photo">
+                        <div style="background-image: url('{{ comment.UserPhoto }}');"></div>
+                    </div>
+                    <div class="col-9comment-text">
+                        <div class="row">
+                            <div class="col-12">
+                                <b ng-bind="comment.AuthorName"></b>
+                            </div>
+                            <div class="col-12">
+                                {{ comment.Text }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-data">{{ comment.CreateDate }}</div>
+                    <div ng-if="@Model.ID === comment.CreateById" class="delete-comment" ng-click="deleteComment(comment.Id)">
+                        <i class="material-icons">cancel</i>
+                    </div>
+                </div>
+                <div class="col-12 text-center no-comment" ng-if="selectedNews.Commentaries.length === 0">
+                    Kometāru nav. Jūsu komentārs var būt pirmais!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center" ng-if="isLoading">
+    <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+</div>

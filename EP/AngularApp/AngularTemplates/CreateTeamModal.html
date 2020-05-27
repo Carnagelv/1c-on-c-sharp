@@ -1,0 +1,41 @@
+﻿<md-dialog aria-label="Izveidot Komandu" class="modal-window">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Izveidot Komandu</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">cancel</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="teamForm" ng-cloak>
+            <div class="md-dialog-content" layout="column" ng-if="disciplines.length !== 0">
+                <md-input-container>
+                    <label>Nosaukums <b ng-if="teamForm.title.$error.pattern">(Nedrīkst izmantot ciparus)</b></label>
+                    <input name="title" ng-model="teamData.title" maxlength="25" ng-pattern="/^[a-zA-Zа-яА-ЯĀ-Žā-ž -]+$/" required />
+                    <div ng-messages="teamForm.title.$error.pattern">
+                        <div ng-message-exp="['pattern']">Komandas nosaukumam ir nepareizs formāts</div>
+                    </div>
+                    <div class="md-input-message-animation" ng-if="notUniqTitle">Jūsu komandas nosaukums jau aizņemts</div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Disciplīna</label>
+                    <md-select name="Discipline" ng-model="teamData.discipline" required>
+                        <md-option ng-repeat="discipline in disciplines" ng-value="{{ discipline.Id }}">{{ discipline.Name }}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="md-dialog-content" layout="column" layout-align="center center" ng-if="disciplines.length === 0">
+                <span>Jūs nevar izveidot komandu, tāpēc ka jums jau ir komandas visās portalā disciplīnes.</span>
+            </div>
+        </form>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Atcelt</md-button>
+        <md-button ng-if="teamData.id === 0" class="md-raised md-primary" ng-disabled="teamForm.$invalid || disciplines.length === 0" ng-click="createTeam()">Izveidot</md-button>
+        <md-button ng-if="teamData.id !== 0" class="md-raised md-primary" ng-disabled="teamForm.$invalid || disciplines.length === 0" ng-click="editTeam()">Rediģēt</md-button>
+    </md-dialog-actions>
+</md-dialog>

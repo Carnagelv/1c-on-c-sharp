@@ -1,0 +1,57 @@
+﻿<md-dialog aria-label="Reģistrācija" class="modal-window">   
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Reģistrācija</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">cancel</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="userForm" ng-cloak>
+            <div class="md-dialog-content" layout="column">
+                <div ng-show="currentStep == 1">
+                    <md-input-container>
+                        <label>Vārds</label>
+                        <input name="firstName" ng-model="userData.FirstName" required />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Uzvārds</label>
+                        <input name="lastName" ng-model="userData.LastName" required />
+                    </md-input-container>
+                </div>
+                <div ng-show="currentStep == 2">
+                    <md-input-container>
+                        <label>E-pasts</label>
+                        <input name="email" ng-model="userData.UserName" ng-pattern="/^.+@.+\..+$/" required />
+                        <div ng-messages="userForm.email.$error">
+                            <div ng-message-exp="['pattern']">Jūsu e-pastam ir nepareizs formāts</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Parole</label>
+                        <input type="password" name="password" ng-model="userData.Password" minlength="8" required />
+                        <div ng-messages="userForm.password.$error">
+                            <div ng-message="minlength">Jūsu parole ir pārāk īsa</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Parole vēl reiz</label>
+                        <input type="password" name="rePassword" ng-model="userData.RePassword" required />
+                    </md-input-container>
+                </div>
+                <div class="row justify-content-center" ng-if="isLoading">
+                    <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+                </div>
+            </div>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout-gt-xs="row" layout-xs="column" layout-xs-align="center center">
+        <md-button ng-show="currentStep == 1" class="md-raised md-warn" ng-click="cancel()">Atcelt</md-button>
+        <md-button ng-show="currentStep == 1" class="md-raised md-primary md-hue-1" ng-click="nextStep()" ng-disabled="!userData.FirstName.length || !userData.LastName.length">Tālāk</md-button>
+        <md-button ng-show="currentStep == 2" class="md-raised md-warn" ng-click="stepBack()">Atpakaļ</md-button>
+        <md-button ng-show="currentStep == 2" class="md-raised md-primary md-hue-1" ng-disabled="userForm.$invalid || !isExistdIdentity()" ng-click="toRegisterUser()">Pieteikties</md-button>
+    </md-dialog-actions>
+</md-dialog>
