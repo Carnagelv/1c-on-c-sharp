@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OneC.BusinessLogic.Models;
 using System.Web.Mvc;
 
 namespace OneC.Controllers

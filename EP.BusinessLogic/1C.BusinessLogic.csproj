@@ -87,6 +87,7 @@
     <Compile Include="Infrastructure\DependencyResolver.cs" />
     <Compile Include="Managers\TableItemManager.cs" />
     <Compile Include="Managers\TableColumnManager.cs" />
+    <Compile Include="Model\Mappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\TableItemService.cs" />
