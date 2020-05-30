@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using OneC.EntityData.Context;
+using OneC.ViewModels;
 
 namespace OneC.BusinessLogic.Models
 {
@@ -8,10 +10,7 @@ namespace OneC.BusinessLogic.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-
-                //cfg.CreateMap<UserProfile, UserViewModel>()
-                //    .ForMember(x => x.CreateDate, y => y.MapFrom(c => c.CreateDate.ToShortDateString()));
-
+                cfg.CreateMap<TableColumn, ColumnVieModel>();
             });
 
             return config.CreateMapper();

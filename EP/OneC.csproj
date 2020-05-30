@@ -177,6 +177,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EPController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,7 +186,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularApp\AngularTemplates\LoginModal.html" />
+    <Content Include="AngularApp\AngularTemplates\CreateCatalog.html" />
     <Content Include="AngularApp\AngularTemplates\WaitModal.html" />
     <Content Include="AngularApp\Scripts\main\main.js" />
     <Content Include="AngularApp\Scripts\main\mainController.js" />
@@ -333,15 +334,20 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EP.BusinessLogic\1C.BusinessLogic.csproj">
+    <ProjectReference Include="..\EP.BusinessLogic\OneC.BusinessLogic.csproj">
       <Project>{b19fe3a8-9d6d-4866-8ba5-3260b0f9b78a}</Project>
-      <Name>1C.BusinessLogic</Name>
+      <Name>OneC.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EP.EntityData\1C.EntityData.csproj">
+    <ProjectReference Include="..\EP.EntityData\OneC.EntityData.csproj">
       <Project>{0a81e5a2-2acf-4225-8ecf-c3db8df23184}</Project>
-      <Name>1C.EntityData</Name>
+      <Name>OneC.EntityData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

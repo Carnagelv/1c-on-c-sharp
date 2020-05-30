@@ -17,6 +17,7 @@ namespace OneC
                         "~/Scripts/angular-sanitize.min.js",
                         "~/AngularApp/Scripts/main/mainFactory.js",
                         "~/AngularApp/Scripts/main/mainController.js",
+                        "~/AngularApp/Scripts/main/mainModalController.js",
                         "~/AngularApp/Scripts/main/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/libraries").Include(

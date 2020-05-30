@@ -1,0 +1,31 @@
+﻿<md-dialog aria-label="Create Catalog" class="w-25">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Create Catalog</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">cancel</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="catalogForm" ng-cloak>
+            <div class="md-dialog-content" layout="column">
+                <div class="column">
+                    <md-input-container class="w-100">
+                        <label>Catalog Name</label>
+                        <input name="catalog" ng-model="modalData.catalogName" ng-required />
+                    </md-input-container>                    
+                </div>
+                <div class="row justify-content-center" ng-if="isLoading">
+                    <md-progress-circular md-diameter="50px" aria-label="Wait"></md-progress-circular>
+                </div>
+            </div>
+        </form>        
+    </md-dialog-content>
+    <md-dialog-actions layout-gt-xs="row" layout-xs="column" layout-xs-align="center center">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
+        <md-button class="md-raised md-primary md-hue-1" ng-disabled="!modalData.catalogName.length" ng-click="saveCatalog()">Save</md-button>
+    </md-dialog-actions>
+</md-dialog>

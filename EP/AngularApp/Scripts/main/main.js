@@ -1,19 +1,9 @@
 ﻿(function () {
     angular.module('OneC', ['ngSanitize', 'ngMaterial', 'ngMessages', 'ngRoute'])
-        .controller('MenuCtrl', function ($scope, $mdSidenav) {
-            $scope.toggleMenu = function () {
-                $mdSidenav('left').toggle();
-            };
-            $scope.isActiveLink = function (link) {
-                return new URL(window.location.href).pathname.indexOf(link) !== -1; 
-            };
-        })
-        .constant('templateUrl', '/AngularApp/AngularTemplates/')
-        .constant('disciplineEnum', {
-            football: 1,
-            basketball: 2,
-            cyberSport: 3
-        })
+        .controller('mainCtrl', MainCtrl)
+        .controller('mainModalCtrl', MainModalCtrl)
+        .factory('mainFactory', MainFactory)
+        .constant('templateUrl', '/AngularApp/AngularTemplates/')        
         .config(function ($mdThemingProvider) {
             var newBlue = $mdThemingProvider.extendPalette('blue', {
                 '500': '#1976D2',

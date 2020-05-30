@@ -44,8 +44,12 @@ function MainFactory($mdToast, $mdDialog, $location, $anchorScroll, templateUrl,
         );
     };
 
-    factory.getInformers = function () {
-        return $http.get('/User/GetInformers');
+    factory.saveCatalog = function (name) {
+        return $http.post('/Catalog/SaveCatalog', { name });
+    };
+
+    factory.loadTable = function () {
+        return $http.get('/Catalog/LoadTable');
     };
 
     return factory;
