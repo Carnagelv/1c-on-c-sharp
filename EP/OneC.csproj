@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularApp\AngularTemplates\AddRow.html" />
+    <Content Include="AngularApp\AngularTemplates\AddColumn.html" />
     <Content Include="AngularApp\AngularTemplates\CreateCatalog.html" />
     <Content Include="AngularApp\AngularTemplates\WaitModal.html" />
     <Content Include="AngularApp\Scripts\main\main.js" />

@@ -83,7 +83,7 @@ namespace OneC.BusinessLogic.Managers
 
                     foreach (var column in table.Columns)
                     {
-                        if (column.IsInitial && column.ChildColumns.Count == 0)
+                        if (column.IsInitial && column.ChildColumns.Count == 0 || column.ChildColumns.Count == 0)
                         {
                             rowItem.RowItems.Add(new RowItemViewModel
                             {
