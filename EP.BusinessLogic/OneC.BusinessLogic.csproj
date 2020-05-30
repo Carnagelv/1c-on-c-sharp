@@ -85,13 +85,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\DependencyResolver.cs" />
-    <Compile Include="Managers\TableItemManager.cs" />
+    <Compile Include="Managers\TableRowManager.cs" />
     <Compile Include="Managers\TableColumnManager.cs" />
     <Compile Include="Models\TableStructureViewModel.cs" />
     <Compile Include="Models\Mappings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\TableItemService.cs" />
+    <Compile Include="Services\TableService.cs" />
+    <Compile Include="Services\TableRowItemService.cs" />
+    <Compile Include="Services\TableRowService.cs" />
     <Compile Include="Services\TableColumnService.cs" />
   </ItemGroup>
   <ItemGroup />

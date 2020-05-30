@@ -7,13 +7,13 @@ namespace OneC.EntityData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialSetup : IMigrationMetadata
+    public sealed partial class Tables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSetup));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Tables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005272124330_InitialSetup"; }
+            get { return "202005301926065_Tables"; }
         }
         
         string IMigrationMetadata.Source

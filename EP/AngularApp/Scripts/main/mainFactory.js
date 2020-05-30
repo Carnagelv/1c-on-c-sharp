@@ -48,8 +48,16 @@ function MainFactory($mdToast, $mdDialog, $location, $anchorScroll, templateUrl,
         return $http.post('/Catalog/SaveCatalog', { name });
     };
 
+    factory.saveRow = function (rows, tableId) {
+        return $http.post('/Catalog/SaveRow', { rows, tableId });
+    };
+
     factory.loadTable = function () {
         return $http.get('/Catalog/LoadTable');
+    };
+
+    factory.getColumns = function (id) {
+        return $http.get('/Catalog/GetColumns', { params: { id }});
     };
 
     return factory;

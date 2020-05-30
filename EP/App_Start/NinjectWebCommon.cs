@@ -70,8 +70,11 @@ namespace OneC.App_Start
             kernel.Bind<ITableColumnService>().To<TableColumnService>();
             kernel.Bind<ITableColumnManager>().To<TableColumnManager>();
 
-            kernel.Bind<ITableItemService>().To<TableItemService>();
-            kernel.Bind<ITableItemManager>().To<TableItemManager>();
+            kernel.Bind<ITableRowService>().To<TableRowService>();
+            kernel.Bind<ITableRowManager>().To<TableRowManager>();
+
+            kernel.Bind<ITableRowItemService>().To<TableRowItemService>();
+            kernel.Bind<ITableService>().To<TableService>();
         }
     }
 }

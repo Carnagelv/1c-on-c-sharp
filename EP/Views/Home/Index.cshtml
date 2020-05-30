@@ -1,8 +1,8 @@
 ﻿<div ng-app="OneC" ng-controller="mainCtrl" class="container" ng-cloak>
     <div class="row">
         <div class="col-12">
-            <h2 class="mb-3 text-center">Catalogs</h2>
-            <md-button ng-click="createCatalog()" class="md-primary md-raised m-0 mb-5">Create Catalog</md-button>
+            <h2 class="mb-3 text-center">Tables</h2>
+            <md-button ng-click="createCatalog()" class="md-primary md-raised m-0 mb-5">Create a Table</md-button>
         </div>
     </div>
     <div class="row" ng-repeat="table in tables">
@@ -10,6 +10,18 @@
             <table class="table table-bordered">
                 <tr>
                     <td ng-repeat="column in table.Columns" ng-bind="column.Name"></td>
+                </tr>
+                <tr ng-repeat="row in table.Rows">
+                    <td ng-repeat="rowItem in row.RowItems">
+                        <div ng-repeat="item in rowItem.Values">
+                            {{ item.Value }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="{{table.Columns.length}}" class="text-center">
+                        <md-button ng-click="addRow(table.Columns[0].Id)" class="md-primary md-raised">Add Data Row</md-button>
+                    </td>
                 </tr>
             </table>
         </div>

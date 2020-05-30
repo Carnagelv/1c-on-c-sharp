@@ -1,0 +1,30 @@
+﻿<md-dialog aria-label="Add Row" class="w-25" ng-init="getColums()">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add Row</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">cancel</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <form name="addRowForm" ng-cloak>
+            <div class="md-dialog-content" layout="column">
+                <div class="column">
+                    <div class="form-group" ng-repeat="column in modalData.columns">
+                        <md-input-container class="w-100">
+                            <label ng-bind="column.Name"></label>
+                            <input name="{{column.Name}}" ng-model="column.Value" required />                            
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </form>        
+    </md-dialog-content>
+    <md-dialog-actions layout-gt-xs="row" layout-xs="column" layout-xs-align="center center">
+        <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
+        <md-button class="md-raised md-primary md-hue-1" ng-disabled="addRowForm.$invalid" ng-click="saveRow()">Save</md-button>
+    </md-dialog-actions>
+</md-dialog>

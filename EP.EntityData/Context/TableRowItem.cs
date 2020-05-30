@@ -1,11 +1,13 @@
 ﻿namespace OneC.EntityData.Context
 {
-    public partial class TableItem
+    public partial class TableRowItem
     {        
         public int Id { get; set; }
 
+        public int TableRowId { get; set; }
+        public virtual TableRow TableRow { get; set; }
+
         public int TableColumnId { get; set; }
-        public virtual TableColumn TableColumn { get; set; }
 
         public string Value { get; set; }
     }

@@ -6,7 +6,7 @@ namespace OneC.EntityData.Context
     {        
         public TableColumn()
         {
-            TableItems = new List<TableItem>();
+            TableRows = new List<TableRow>();
         }
 
         public int Id { get; set; }
@@ -14,7 +14,11 @@ namespace OneC.EntityData.Context
         public string Name { get; set; }
 
         public int? ParentId { get; set; }
+        public bool IsInitial { get; set; }
 
-        public virtual ICollection<TableItem> TableItems { get; set; }
+        public int TableId { get; set; }
+        public virtual Table Table { get; set; }
+
+        public virtual ICollection<TableRow> TableRows { get; set; }
     }
 }

@@ -9,19 +9,19 @@ namespace OneC.BusinessLogic.Services
 {
     public abstract class BaseService<T> where T : class
     {
-        protected IDataContext DataContext;
+        protected IDataContext dataContext;
         public readonly IDbSet<T> dbSet;
 
         protected BaseService(IDataContext dataContext)
         {
-            DataContext = dataContext;
+            this.dataContext = dataContext;
             dbSet = dataContext.Set<T>();
         }
 
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual void AddRange(IEnumerable<T> entities)
@@ -31,14 +31,14 @@ namespace OneC.BusinessLogic.Services
                 dbSet.Add(entity);
             }
 
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);
-            DataContext.Entry(entity).State = EntityState.Modified;
-            DataContext.SaveChanges();
+            dataContext.Entry(entity).State = EntityState.Modified;
+            dataContext.SaveChanges();
         }
 
         public virtual void Update(IEnumerable<T> entities)
@@ -46,16 +46,16 @@ namespace OneC.BusinessLogic.Services
             foreach (T entity in entities)
             {
                 dbSet.Attach(entity);
-                DataContext.Entry(entity).State = EntityState.Modified;
+                dataContext.Entry(entity).State = EntityState.Modified;
             }
 
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual void Delete(T entity)
         {
             dbSet.Remove(entity);
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual void Delete(Expression<Func<T, bool>> where)
@@ -65,7 +65,7 @@ namespace OneC.BusinessLogic.Services
             foreach (T obj in objects)
                 dbSet.Remove(obj);
 
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual void Delete(IEnumerable<T> entitites)
@@ -75,7 +75,7 @@ namespace OneC.BusinessLogic.Services
                 dbSet.Remove(entity);
             }
 
-            DataContext.SaveChanges();
+            dataContext.SaveChanges();
         }
 
         public virtual T GetById(long id)
@@ -110,12 +110,12 @@ namespace OneC.BusinessLogic.Services
 
         protected void EnableAutoDetectChanges()
         {
-            ((DbContext)DataContext).Configuration.AutoDetectChangesEnabled = true;
+            ((DbContext)dataContext).Configuration.AutoDetectChangesEnabled = true;
         }
 
         protected void DisableAutoDetectChanges()
         {
-            ((DbContext)DataContext).Configuration.AutoDetectChangesEnabled = false;
+            ((DbContext)dataContext).Configuration.AutoDetectChangesEnabled = false;
         }
     }
 

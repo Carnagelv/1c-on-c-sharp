@@ -48,11 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DataContext.cs" />
-    <Compile Include="Context\TableItem.cs" />
+    <Compile Include="Context\Table.cs" />
+    <Compile Include="Context\TableIRow.cs" />
+    <Compile Include="Context\TableRowItem.cs" />
     <Compile Include="Context\TableColumn.cs" />
-    <Compile Include="Migrations\202005272124330_InitialSetup.cs" />
-    <Compile Include="Migrations\202005272124330_InitialSetup.Designer.cs">
-      <DependentUpon>202005272124330_InitialSetup.cs</DependentUpon>
+    <Compile Include="Migrations\202005301926065_Tables.cs" />
+    <Compile Include="Migrations\202005301926065_Tables.Designer.cs">
+      <DependentUpon>202005301926065_Tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,8 +63,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005272124330_InitialSetup.resx">
-      <DependentUpon>202005272124330_InitialSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005301926065_Tables.resx">
+      <DependentUpon>202005301926065_Tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

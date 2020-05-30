@@ -5,17 +5,8 @@ namespace OneC.Controllers
 {
     public class HomeController : EPController
     {
-        private readonly ITableColumnManager _tableColumnManager;
-        private readonly ITableItemManager _tableItemManager;
-
-        public HomeController
-        (
-            ITableColumnManager tableColumnManager,
-            ITableItemManager tableItemManager
-        )
+        public HomeController()
         {
-            _tableColumnManager = tableColumnManager;
-            _tableItemManager = tableItemManager;
         }
 
         public ActionResult Index()

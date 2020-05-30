@@ -7,7 +7,6 @@ namespace OneC.BusinessLogic.Services
     public interface ITableColumnService : IService<TableColumn>
     {
         bool SaveCatalog(string name);
-        List<TableColumn> GetColumns();
     }
 
     public class TableColumnService : BaseService<TableColumn>, ITableColumnService
@@ -21,18 +20,22 @@ namespace OneC.BusinessLogic.Services
             if (dbSet.Any(a => a.Name == name))
                 return false;
 
-            Add(new TableColumn
+            var table = new Table
+            {
+                InitialColumnName = name
+            };
+
+            table.TableColumns.Add(new TableColumn
             {
                 Name = name,
-                ParentId = null
+                ParentId = null,
+                IsInitial = true
             });
 
-            return true;
-        }
+            dataContext.Tables.Add(table);
+            dataContext.SaveChanges();
 
-        public List<TableColumn> GetColumns()
-        {
-            return dbSet.ToList();
+            return true;
         }
     }
 }

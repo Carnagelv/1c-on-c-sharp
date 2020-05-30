@@ -9,14 +9,25 @@ function MainCtrl($scope, mainFactory) {
         });
     }
 
-    $scope.createCatalog = function () {
+    function createInitialData() {
         var data = {
             loadTable: function () {
                 loadTable();
             }
         };
 
-        mainFactory.showModal(MainModalCtrl, "CreateCatalog.html", data);        
+        return data;
+    }
+
+    $scope.createCatalog = function () {
+        mainFactory.showModal(MainModalCtrl, "CreateCatalog.html", createInitialData());
+    };
+
+    $scope.addRow = function (tableId) {
+        var data = createInitialData();
+        data.tableId = tableId;
+
+        mainFactory.showModal(MainModalCtrl, "AddRow.html", data);
     };
 
     loadTable();
