@@ -13,6 +13,7 @@ namespace OneC.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public int? ParentId { get; set; }
+        public int TableId { get; set; }
         public bool IsInitial { get; set; }
         public List<ColumnVieModel> ChildColumns { get; set; } = new List<ColumnVieModel>();
     }
@@ -22,6 +23,7 @@ namespace OneC.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+        public bool IsInitial { get; set; }
     }
 
     public class RowViewModel

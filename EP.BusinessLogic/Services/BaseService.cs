@@ -58,6 +58,11 @@ namespace OneC.BusinessLogic.Services
             dataContext.SaveChanges();
         }
 
+        public virtual bool IsExist(Expression<Func<T, bool>> any)
+        {
+            return dbSet.Any(any);
+        }
+
         public virtual void Delete(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where(where).AsEnumerable();
@@ -134,5 +139,6 @@ namespace OneC.BusinessLogic.Services
         List<T> GetMany(Expression<Func<T, bool>> where);
         int Count();
         int Count(Expression<Func<T, bool>> where);
+        bool IsExist(Expression<Func<T, bool>> any);
     }
 }

@@ -35,4 +35,17 @@ function MainModalCtrl($scope, $mdDialog, mainFactory, modalData) {
             }
         });
     };
+
+    $scope.saveColumn = function () {
+        $scope.modalData.parentId = $scope.modalData.parentId || 0;
+
+        mainFactory.saveColumn($scope.modalData.columnName, $scope.modalData.tableId, $scope.modalData.parentId).then(function (response) {
+            if (response.data.success) {
+                $scope.modalData.loadTable();
+                $scope.cancel();
+            } else {
+                mainFactory.showNotify('Error! Name is empty or not unique');
+            }
+        });
+    };
 }

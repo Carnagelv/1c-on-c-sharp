@@ -13,7 +13,7 @@
         <form name="addRowForm" ng-cloak>
             <div class="md-dialog-content" layout="column">
                 <div class="column">
-                    <div class="form-group" ng-repeat="column in modalData.columns">
+                    <div class="form-group" ng-repeat="column in modalData.columns" ng-if="$index === 0 || !column.IsInitial">
                         <md-input-container class="w-100">
                             <label ng-bind="column.Name"></label>
                             <input name="{{column.Name}}" ng-model="column.Value" required />                            

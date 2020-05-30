@@ -30,6 +30,12 @@ namespace OneC.Controllers
         public JsonResult GetColumns(int id)
         {
             return Json(new { columns = _tableColumnManager.GetColumns(id) }, JsonRequestBehavior.AllowGet);
+        } 
+        
+        [HttpGet]
+        public JsonResult DeleteRow(int id)
+        {
+            return Json(new { success = _tableRowManager.DeleteRow(id) }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -42,6 +48,12 @@ namespace OneC.Controllers
         public JsonResult SaveRow(List<TableRowViewModel> rows, int tableId)
         {
             return Json(new { success = _tableRowManager.SaveRow(rows, tableId) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult SaveColumn(string name, int tableId, int parentId)
+        {
+            return Json(new { success = _tableColumnManager.SaveColumn(name, tableId, parentId) }, JsonRequestBehavior.AllowGet);
         }
     }
 }

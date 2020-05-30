@@ -60,5 +60,13 @@ function MainFactory($mdToast, $mdDialog, $location, $anchorScroll, templateUrl,
         return $http.get('/Catalog/GetColumns', { params: { id }});
     };
 
+    factory.deleteRow = function (id) {
+        return $http.get('/Catalog/DeleteRow', { params: { id } });
+    };
+
+    factory.saveColumn = function (name, tableId, parentId) {
+        return $http.post('/Catalog/SaveColumn', { name, tableId, parentId });
+    };
+
     return factory;
 }

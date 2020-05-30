@@ -12,6 +12,7 @@ namespace OneC.BusinessLogic.Managers
         bool SaveCatalog(string name);
         List<TableStructureViewModel> GetTable();
         List<TableRowViewModel> GetColumns(int id);
+        bool SaveColumn(string name, int tableId, int parentId);
     }
 
     public class TableColumnManager : ITableColumnManager
@@ -57,7 +58,7 @@ namespace OneC.BusinessLogic.Managers
                 var parentColumns = mappedColumns.Where(w => !w.ParentId.HasValue).ToList();
 
                 foreach (var column in parentColumns)
-                    column.ChildColumns = GetChildColumn(parentColumns, mappedColumns);
+                    column.ChildColumns = mappedColumns.Where(w => w.ParentId == column.Id).ToList();
 
                 tables.Add(new TableStructureViewModel
                 {
@@ -82,7 +83,7 @@ namespace OneC.BusinessLogic.Managers
 
                     foreach (var column in table.Columns)
                     {
-                        if (column.IsInitial)
+                        if (column.IsInitial && column.ChildColumns.Count == 0)
                         {
                             rowItem.RowItems.Add(new RowItemViewModel
                             {
@@ -139,19 +140,44 @@ namespace OneC.BusinessLogic.Managers
             return result;
         }
 
-        private List<ColumnVieModel> GetChildColumn(List<ColumnVieModel> parent, List<ColumnVieModel> mapped)
+        public bool SaveColumn(string name, int tableId, int parentId)
         {
-            var resultColumn = new List<ColumnVieModel>();
-
-            foreach (var column in parent)
+            if (parentId != 0)
             {
-                var childColumn = mapped.Where(w => w.ParentId == column.Id).ToList();
-                childColumn.AddRange(GetChildColumn(childColumn, mapped));
+                if (!_tableColumnService.IsExist(i => i.Name == name && i.ParentId == parentId && i.TableId == tableId))
+                {
+                    var parent = _tableColumnService.Get(g => g.Id == parentId);
 
-                column.ChildColumns = childColumn;
+                    parent.IsInitial = true;
+
+                    _tableColumnService.Update(parent);
+
+                    _tableColumnService.Add(new TableColumn
+                    {
+                        Name = name,
+                        ParentId = parentId,
+                        TableId = tableId
+                    });
+
+                    return true;
+                }
+            }
+            else
+            {
+                if (!_tableColumnService.IsExist(i => i.Name == name && i.TableId == tableId))
+                {
+                    _tableColumnService.Add(new TableColumn
+                    {
+                        Name = name,
+                        TableId = tableId,
+                        IsInitial = false
+                    });
+
+                    return true;
+                }
             }
 
-            return resultColumn;
+            return false;
         }
     }
 }

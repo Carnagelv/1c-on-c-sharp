@@ -8,6 +8,7 @@ namespace OneC.BusinessLogic.Managers
     public interface ITableRowManager
     {
         bool SaveRow(List<TableRowViewModel> rows, int tableId);
+        bool DeleteRow(int id);
     }
 
     public class TableRowManager : ITableRowManager
@@ -38,6 +39,20 @@ namespace OneC.BusinessLogic.Managers
             _tableRowService.Add(row);
 
             return true;
+        }
+
+        public bool DeleteRow(int id)
+        {
+            var row = _tableRowService.GetById(id);
+
+            if (row != null)
+            {
+                _tableRowService.Delete(row);
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

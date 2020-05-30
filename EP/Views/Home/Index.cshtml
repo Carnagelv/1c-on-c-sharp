@@ -9,7 +9,20 @@
         <div class="col-12">
             <table class="table table-bordered">
                 <tr>
-                    <td ng-repeat="column in table.Columns" ng-bind="column.Name"></td>
+                    <td rowspan="{{$index === 0 && table.doubleRowSpan ? 2 : 1}}" 
+                        class="text-center"
+                        ng-repeat="column in table.Columns" 
+                        colspan="{{ column.ChildColumns.length }}" 
+                        ng-bind="column.Name"></td>
+                    <td class="text-center" rowspan="2">
+                        <md-icon ng-click="addColumn(table.Columns[0].Id, 0)" class="pointer text-success" md-font-library="material-icons">add</md-icon>
+                    </td>
+                </tr>
+                <tr>
+                    <td ng-repeat="childColumn in table.childColumns" class="text-center">
+                        {{ childColumn.Name }}
+                        <md-icon ng-if="childColumn.ShowAdd" ng-click="addColumn(childColumn.TableId, childColumn.ParentId)" class="pointer text-success" md-font-library="material-icons">add</md-icon>
+                    </td>
                 </tr>
                 <tr ng-repeat="row in table.Rows">
                     <td ng-repeat="rowItem in row.RowItems">
@@ -17,10 +30,13 @@
                             {{ item.Value }}
                         </div>
                     </td>
+                    <td class="text-center">
+                        <md-icon ng-click="deleteRow(row.RowId)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon> 
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="{{table.Columns.length}}" class="text-center">
-                        <md-button ng-click="addRow(table.Columns[0].Id)" class="md-primary md-raised">Add Data Row</md-button>
+                    <td colspan="{{table.childColumns.length + 2}}" class="text-center">
+                        <md-button ng-click="addRow(table.Columns[0].TableId)" class="md-primary md-raised">Add Data Row</md-button>
                     </td>
                 </tr>
             </table>
