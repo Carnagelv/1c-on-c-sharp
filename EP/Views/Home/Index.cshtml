@@ -29,8 +29,8 @@
                         <div ng-repeat="item in rowItem.Values" ng-mouseover="showIcons = true" ng-mouseleave="showIcons = false">
                             {{ item.Value }}
                             <span ng-show="showIcons">
-                                <md-icon ng-if="$parent.$index !== 0" ng-click="deleteValue(item.Id)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon>
                                 <md-icon ng-click="editValue(item.Id, item.Value, row.RowId, rowItem.ColumnId)" class="pointer text-primary" md-font-library="material-icons">create</md-icon>
+                                <md-icon ng-if="$parent.$index !== 0" ng-click="deleteValue(item.Id)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon>
                             </span>
                         </div>
                         <md-icon ng-if="$index !== 0" ng-click="addValue(row.RowId, rowItem.ColumnId)" class="pointer text-success" md-font-library="material-icons">add</md-icon>

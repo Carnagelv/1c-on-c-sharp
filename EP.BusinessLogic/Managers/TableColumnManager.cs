@@ -185,9 +185,7 @@ namespace OneC.BusinessLogic.Managers
 
         public bool SaveValue(string value, int rowId, int columnId)
         {
-            var values = _tableRowItemService.GetMany(g => g.TableRowId == rowId && g.TableColumnId == columnId);
-
-            if (!values.Any(a => a.Value == value))
+            if (!string.IsNullOrEmpty(value))
             {
                 _tableRowItemService.Add(new TableRowItem
                 {
@@ -209,15 +207,12 @@ namespace OneC.BusinessLogic.Managers
             var currValue = values.FirstOrDefault(f => f.Id == valueId);
 
             if (currValue != null)
-            {
-                if (!values.Any(a => a.Value == value))
-                {
-                    currValue.Value = value;
+            {              
+                currValue.Value = value;
 
-                    _tableRowItemService.Update(currValue);
+                _tableRowItemService.Update(currValue);
 
-                    return true;
-                }
+                return true;
             }
 
             return false;

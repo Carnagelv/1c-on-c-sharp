@@ -16,7 +16,7 @@
                     <div class="form-group" ng-repeat="column in modalData.columns" ng-if="$index === 0 || !column.IsInitial">
                         <md-input-container class="w-100">
                             <label ng-bind="column.Name"></label>
-                            <input name="{{column.Name}}" ng-model="column.Value" required />                            
+                            <input name="{{column.Name}}" ng-model="column.Value" ng-required="column.IsInitial" />                            
                         </md-input-container>
                     </div>
                 </div>
