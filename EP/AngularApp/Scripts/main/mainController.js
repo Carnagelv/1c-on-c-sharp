@@ -88,11 +88,12 @@ function MainCtrl($scope, mainFactory) {
         var data = createInitialData();
         data.rowId = rowId;
         data.columnId = columnId;
+        data.valueId = null;
 
         mainFactory.showModal(MainModalCtrl, "AddRowValue.html", data);
     };
 
-    $scope.deleteRow = function (valueId) {
+    $scope.deleteValue = function (valueId) {
         mainFactory.deleteValue(valueId).then(function (response) {
             if (response.data.success) {
                 loadTable();
@@ -100,6 +101,16 @@ function MainCtrl($scope, mainFactory) {
                 mainFactory.showNotify('Error! Please, reload the page');
             }
         });
+    };
+
+    $scope.editValue = function (valueId, valueName, rowId, columnId) {
+        var data = createInitialData();
+        data.rowId = rowId;
+        data.columnId = columnId;
+        data.newValue = valueName;
+        data.valueId = valueId;
+
+        mainFactory.showModal(MainModalCtrl, "AddRowValue.html", data);
     };
 
     loadTable();

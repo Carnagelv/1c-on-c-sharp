@@ -1,7 +1,7 @@
 ﻿<md-dialog aria-label="Add Value" class="w-25">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Add Value</h2>
+            <h2 ng-bind="modalData.valueId === null ? 'Add Value' : 'Edit Value'"></h2>
             <span flex></span>
             <md-button class="md-icon-button" ng-click="cancel()">
                 <i class="material-icons">cancel</i>
@@ -25,6 +25,7 @@
     </md-dialog-content>
     <md-dialog-actions layout-gt-xs="row" layout-xs="column" layout-xs-align="center center">
         <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
-        <md-button class="md-raised md-primary md-hue-1" ng-disabled="addValueForm.$invalid" ng-click="saveValue()">Save</md-button>
+        <md-button ng-if="modalData.valueId === null"  class="md-raised md-primary md-hue-1" ng-disabled="addValueForm.$invalid" ng-click="saveValue()">Save</md-button>
+        <md-button ng-if="modalData.valueId !== null" class="md-raised md-primary md-hue-1" ng-disabled="addValueForm.$invalid" ng-click="editValue()">Save</md-button>
     </md-dialog-actions>
 </md-dialog>

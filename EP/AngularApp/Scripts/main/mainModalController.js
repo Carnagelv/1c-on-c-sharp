@@ -59,4 +59,15 @@ function MainModalCtrl($scope, $mdDialog, mainFactory, modalData) {
             }
         });
     };
+
+    $scope.editValue = function () {
+        mainFactory.editValue($scope.modalData.newValue, $scope.modalData.rowId, $scope.modalData.columnId, $scope.modalData.valueId).then(function (response) {
+            if (response.data.success) {
+                $scope.modalData.loadTable();
+                $scope.cancel();
+            } else {
+                mainFactory.showNotify('Error! Value is empty or not unique');
+            }
+        });
+    };
 }
