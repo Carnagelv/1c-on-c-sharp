@@ -55,5 +55,23 @@ namespace OneC.Controllers
         {
             return Json(new { success = _tableColumnManager.SaveColumn(name, tableId, parentId) }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult SaveValue(string value, int rowId, int columnId)
+        {
+            return Json(new { success = _tableColumnManager.SaveValue(value, rowId, columnId) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult EditValue(string value, int rowId, int columnId, int valueId)
+        {
+            return Json(new { success = _tableColumnManager.EditValue(value, rowId, columnId, valueId) }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteValue(int valueId)
+        {
+            return Json(new { success = _tableColumnManager.DeleteValue(valueId) }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -29,6 +29,7 @@
                         <div ng-repeat="item in rowItem.Values">
                             {{ item.Value }}
                         </div>
+                        <md-icon ng-click="addValue(row.RowId, rowItem.ColumnId)" class="pointer text-success" md-font-library="material-icons">add</md-icon>
                     </td>
                     <td class="text-center">
                         <md-icon ng-click="deleteRow(row.RowId)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon> 

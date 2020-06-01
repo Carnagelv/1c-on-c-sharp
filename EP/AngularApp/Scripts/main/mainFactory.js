@@ -68,5 +68,17 @@ function MainFactory($mdToast, $mdDialog, $location, $anchorScroll, templateUrl,
         return $http.post('/Catalog/SaveColumn', { name, tableId, parentId });
     };
 
+    factory.saveValue = function (value, rowId, columnId) {
+        return $http.post('/Catalog/SaveValue', { value, rowId, columnId });
+    };
+
+    factory.editValue = function (value, rowId, columnId, valueId) {
+        return $http.post('/Catalog/EditValue', { value, rowId, columnId, valueId });
+    };
+
+    factory.deleteValue = function (valueId) {
+        return $http.post('/Catalog/DeleteValue', { valueId });
+    };
+
     return factory;
 }

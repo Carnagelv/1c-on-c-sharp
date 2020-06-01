@@ -186,6 +186,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularApp\AngularTemplates\AddRowValue.html" />
     <Content Include="AngularApp\AngularTemplates\AddRow.html" />
     <Content Include="AngularApp\AngularTemplates\AddColumn.html" />
     <Content Include="AngularApp\AngularTemplates\CreateCatalog.html" />

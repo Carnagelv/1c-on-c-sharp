@@ -13,6 +13,9 @@ namespace OneC.BusinessLogic.Managers
         List<TableStructureViewModel> GetTable();
         List<TableRowViewModel> GetColumns(int id);
         bool SaveColumn(string name, int tableId, int parentId);
+        bool SaveValue(string value, int rowId, int columnId);
+        bool EditValue(string value, int rowId, int columnId, int valueId);
+        bool DeleteValue(int valueId);
     }
 
     public class TableColumnManager : ITableColumnManager
@@ -178,6 +181,56 @@ namespace OneC.BusinessLogic.Managers
             }
 
             return false;
+        }
+
+        public bool SaveValue(string value, int rowId, int columnId)
+        {
+            var values = _tableRowItemService.GetMany(g => g.TableRowId == rowId && g.TableColumnId == columnId);
+
+            if (!values.Any(a => a.Value == value))
+            {
+                _tableRowItemService.Add(new TableRowItem
+                {
+                    TableColumnId = columnId,
+                    TableRowId = rowId,
+                    Value = value
+                });
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool EditValue(string value, int rowId, int columnId, int valueId)
+        {
+            var values = _tableRowItemService.GetMany(g => g.TableRowId == rowId && g.TableColumnId == columnId);
+
+            var currValue = values.FirstOrDefault(f => f.Id == valueId);
+
+            if (currValue != null)
+            {
+                if (!values.Any(a => a.Value == value))
+                {
+                    currValue.Value = value;
+
+                    _tableRowItemService.Update(currValue);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool DeleteValue(int valueId)
+        {
+            var value = _tableRowItemService.GetById(valueId);
+
+            if (value != null)
+                _tableRowItemService.Delete(value);
+
+            return true;
         }
     }
 }

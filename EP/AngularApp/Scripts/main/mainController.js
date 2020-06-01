@@ -84,5 +84,13 @@ function MainCtrl($scope, mainFactory) {
         mainFactory.showModal(MainModalCtrl, "AddColumn.html", data);
     };
 
+    $scope.addValue = function (rowId, columnId) {
+        var data = createInitialData();
+        data.rowId = rowId;
+        data.columnId = columnId;
+
+        mainFactory.showModal(MainModalCtrl, "AddRowValue.html", data);
+    };
+
     loadTable();
 }
