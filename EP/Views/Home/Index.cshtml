@@ -26,10 +26,13 @@
                 </tr>
                 <tr ng-repeat="row in table.Rows">
                     <td ng-repeat="rowItem in row.RowItems">
-                        <div ng-repeat="item in rowItem.Values">
+                        <div ng-repeat="item in rowItem.Values" ng-mouseover="showIcons = true" ng-mouseleave="showIcons = false">
                             {{ item.Value }}
+                            <span ng-show="showIcons">
+                                <md-icon ng-click="deleteRow(item.Id)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon>
+                            </span>
                         </div>
-                        <md-icon ng-click="addValue(row.RowId, rowItem.ColumnId)" class="pointer text-success" md-font-library="material-icons">add</md-icon>
+                        <md-icon ng-if="$index !== 0" ng-click="addValue(row.RowId, rowItem.ColumnId)" class="pointer text-success" md-font-library="material-icons">add</md-icon>
                     </td>
                     <td class="text-center">
                         <md-icon ng-click="deleteRow(row.RowId)" class="pointer text-danger" md-font-library="material-icons">delete</md-icon> 

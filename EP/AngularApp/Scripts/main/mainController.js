@@ -92,5 +92,15 @@ function MainCtrl($scope, mainFactory) {
         mainFactory.showModal(MainModalCtrl, "AddRowValue.html", data);
     };
 
+    $scope.deleteRow = function (valueId) {
+        mainFactory.deleteValue(valueId).then(function (response) {
+            if (response.data.success) {
+                loadTable();
+            } else {
+                mainFactory.showNotify('Error! Please, reload the page');
+            }
+        });
+    };
+
     loadTable();
 }
